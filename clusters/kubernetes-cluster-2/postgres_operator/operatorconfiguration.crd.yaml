@@ -2,6 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: operatorconfigurations.acid.zalan.do
+  namespace: postgres-operator
 spec:
   group: acid.zalan.do
   names:
