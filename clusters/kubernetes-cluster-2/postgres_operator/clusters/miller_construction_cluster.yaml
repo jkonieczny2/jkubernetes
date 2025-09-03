@@ -1,0 +1,21 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: miller-construction-pg-cluster
+  namespace: postgres-operator
+spec:
+  teamId: "miller-construction"
+  volume:
+    storageClass: pg-ebs-gp3-retain-storage-class
+    size: 10Gi
+    #iops: 1000 # EBS gp3 only
+    #throughput: 250 # EBS gp3 only
+  numberOfInstances: 2
+  users:
+    admin:
+      - superuser
+      - createdb
+  databases:
+    miller_construction: admin
+  postgresql:
+    version: "17"

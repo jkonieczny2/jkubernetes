@@ -1,0 +1,9 @@
+### Delete resource stuck in pending
+
+Most likely you need to remove the finalizers, which only allow deletion when certain conditions met.
+
+First edit the resource:
+
+kubectl edit pvc/pgdata-miller-construction-pg-cluster-0 -n postgres-operator
+
+Remove the 'finalizers' section; then you should be able to delete
