@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: pg-ebs-gp3-retain-storage-class
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  type: "gp3"
+  encrypted: "true"
+  kmsKeyId: "04c61b53-6008-475e-8ebf-5e120c2681a1"
+  # iopsPerGB: "3" # For io1/io2, specify IOPS per GB
+  # throughput: "125" # For gp3, specify throughput in MiB/s
+reclaimPolicy: Retain
+allowVolumeExpansion: true
